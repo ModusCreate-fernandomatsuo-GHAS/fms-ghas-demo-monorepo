@@ -58,18 +58,22 @@ jobs:
       run: |
         echo ${{ matrix.project_path }}
 
-     # ---------------------
-    # Scan code using build none
     # ---------------------
-    - name: Initialize CodeQL (build none)
+    # Scan code using autobuild
+    # ---------------------
+    - name: Initialize CodeQL (autobuild)
       uses: github/codeql-action/init@v3
       with:
         languages: 'csharp'
-        build-mode: 'none'
+        build-mode: 'autobuild'
         debug: true
-        config: |
-          paths:
-            - ${{ matrix.project_path }}
+
+    - name: Perform CodeQL Analysis (autobuild)
+      id: autobuild
+      continue-on-error: true
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/path:autobuild-${{ matrix.project_path }}"
 
     - name: Perform CodeQL Analysis (none)
       continue-on-error: true
