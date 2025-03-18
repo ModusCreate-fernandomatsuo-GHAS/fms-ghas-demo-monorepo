@@ -2,6 +2,12 @@ name: FMS CodeQL Analysis
 
 on:
   workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+  # schedule:
+  #   - cron: '15 23 * * 6'
 
 env:
   ACTIONS_STEP_DEBUG: true
