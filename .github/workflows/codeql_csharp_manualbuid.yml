@@ -1,4 +1,4 @@
-name: FMS CodeQL C# Analysis
+name: FMS CodeQL C# Analysis manualbuild
 
 on:
   workflow_dispatch:
