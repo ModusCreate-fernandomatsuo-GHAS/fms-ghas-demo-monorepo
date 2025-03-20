@@ -47,3 +47,4 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3_bucket_server_
 }
 
 
+
