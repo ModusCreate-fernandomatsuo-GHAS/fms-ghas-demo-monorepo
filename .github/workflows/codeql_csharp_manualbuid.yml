@@ -75,9 +75,9 @@ jobs:
         cd ${{ matrix.project_path }}
         dotnet build /p:EnableWindowsTargeting=true
 
-    - name: Perform CodeQL Analysis (none)
+    - name: Perform CodeQL Analysis (manualbuild)
       continue-on-error: true
-      id: nonebuild
+      id: manual
       uses: github/codeql-action/analyze@v3
       with:
         category: "/path:none-${{ matrix.project_path }}"

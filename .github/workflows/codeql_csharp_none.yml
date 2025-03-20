@@ -73,7 +73,7 @@ jobs:
 
     - name: Perform CodeQL Analysis (none)
       continue-on-error: true
-      id: nonebuild
+      id: none
       uses: github/codeql-action/analyze@v3
       with:
         category: "/path:none-${{ matrix.project_path }}"

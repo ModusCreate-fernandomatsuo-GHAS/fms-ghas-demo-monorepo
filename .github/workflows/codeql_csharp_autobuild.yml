@@ -74,10 +74,3 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/path:autobuild-${{ matrix.project_path }}"
-
-    - name: Perform CodeQL Analysis (none)
-      continue-on-error: true
-      id: nonebuild
-      uses: github/codeql-action/analyze@v3
-      with:
-        category: "/path:none-${{ matrix.project_path }}"
