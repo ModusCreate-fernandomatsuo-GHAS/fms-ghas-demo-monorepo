@@ -37,11 +37,19 @@ jobs:
           output_format: cli,sarif,json
           output_file_path: console,results.sarif,results.json
 
-      - name: tfsec
-        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
-        if: success() || failure()
-        # with:
-        #   github_token: ${{ github.token }}
+    - name: Post SARIF findings in the pull request
+        if: github.event_name == 'pull_request'
+        uses: sett-and-hive/sarif-to-comment-action@v2.0.1
+        with:
+          token: ${{ secrets.COMMENT_TOKEN }}
+          repository: ${{ github.repository }}
+          branch: ${{ github.head_ref }}
+          pr-number: ${{ github.event.number }}
+          sarif-file: results.sarif
+          title: My security issue
+          dry-run: false
+          
+
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
