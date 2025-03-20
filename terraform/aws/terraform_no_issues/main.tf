@@ -9,10 +9,16 @@ provider "aws" {
 
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = "modus-create-s3-demo-2024-09-15-ni"
-
   tags = {
     Name        = "modus bucket demo"
     Environment = "dev"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
+  bucket = aws_s3_bucket.s3_bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
