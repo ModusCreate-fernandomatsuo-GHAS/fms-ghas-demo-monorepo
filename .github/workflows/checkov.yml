@@ -38,7 +38,7 @@ jobs:
           output_file_path: console,results.sarif,results.json
 
     - name: Post SARIF findings in the pull request
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && (success() || failure())
         uses: sett-and-hive/sarif-to-comment-action@v2.0.1
         with:
           token: ${{ secrets.COMMENT_TOKEN }}
